@@ -17,7 +17,7 @@ module.exports = {
         new DefinePlugin({
             DEV_BUILD: JSON.stringify(false)
         }),
-        new HtmlWebpackPlugin({ title: "Molvis demo" })
+        new HtmlWebpackPlugin({ title: "Babylon.js NPM Package Template" })
     ],
     module: {
         rules: [

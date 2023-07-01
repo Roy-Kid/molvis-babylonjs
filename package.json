@@ -1,5 +1,5 @@
 {
-  "name": "molvis",
+  "name": "npm-package-template",
   "version": "1.0.0",
   "description": "",
   "private": "true",
@@ -13,10 +13,6 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.2.1",
-    "lerna": "^6.4.1",
     "recursive-install": "^1.4.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

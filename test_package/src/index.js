@@ -6,7 +6,7 @@ document.body.style.margin = "0";
 document.body.style.padding = "0";
 
 const title = document.createElement("p");
-title.innerText = "Molvis demo page";
+title.innerText = "Babylon.js NPM Package Template";
 title.style.fontSize = "32pt";
 title.style.textAlign = "center";
 document.body.appendChild(title);
@@ -24,23 +24,10 @@ canvas.style.height = "100%";
 canvas.style.display = "block";
 div.appendChild(canvas);
 
-// let assetsHostUrl;
-// if (DEV_BUILD) {
-//     assetsHostUrl = "http://127.0.0.1:8181/";
-// } else {
-//     assetsHostUrl = "https://nonlocal-assets-host-url/";
-// }
-let molvisApp = initializeMolvis({ canvas: canvas });
-
-const h2o_coordinates = [
-    [4.485786, 6.470829, 0.945954],  // O
-    [4.497160, 5.858652, 1.681713],  // H
-    [3.560061, 6.553797, 0.717081]   // H
-]
-
-const h20_connect = [
-    [0, 1], [0, 2]
-]
-
-molvisApp.entities.add_atoms(h2o_coordinates, { type: ["O", "H", "H"] });
-molvisApp.entities.add_bonds(h20_connect);
+let assetsHostUrl;
+if (DEV_BUILD) {
+    assetsHostUrl = "http://127.0.0.1:8181/";
+} else {
+    assetsHostUrl = "https://nonlocal-assets-host-url/";
+}
+initializeMolvis({ canvas: canvas, assetsHostUrl: assetsHostUrl });

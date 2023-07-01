@@ -17,9 +17,8 @@ module.exports = {
         new DefinePlugin({
             DEV_BUILD: JSON.stringify(true)
         }),
-        new HtmlWebpackPlugin({ title: "Molvis demo" })
+        new HtmlWebpackPlugin({ title: "Babylon.js NPM Package Template" })
     ],
-    devtool: 'eval-source-map',
     module: {
         rules: [
             {
