@@ -16,5 +16,12 @@ export function initializeMolvis(options: InitializeMolvisOptions) {
     const canvas = options.canvas;
     const app = new Molvis(canvas);
     app.run();
+
+    setInterval(
+        () => {
+            app.camera.rotate(0.01, 0);
+        },
+        1
+    )
 }
 
