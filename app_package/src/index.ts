@@ -1,5 +1,5 @@
 import { Engine } from "@babylonjs/core";
-import { CreateMolvisScene } from "./molvis/app";
+import { Molvis } from "./app";
 
 export interface InitializeMolvisOptions {
     canvas: HTMLCanvasElement;
@@ -14,13 +14,7 @@ export function initializeMolvis(options: InitializeMolvisOptions) {
     }
 
     const canvas = options.canvas;
-    const engine = new Engine(canvas);
-    const scene = CreateMolvisScene(engine, canvas);
-    engine.runRenderLoop(() => {
-        scene.render();
-    });
-    window.addEventListener("resize", () => {
-        engine.resize();
-    });
+    const app = new Molvis(canvas);
+    app.run();
 }
 
