@@ -19,26 +19,40 @@ export class Molvis {
         this.camera = new MOLVIS.Camera(canvas, true);
         this.camera.setPosition(new BABYLON.Vector3(0, 0, -10));
 
-        this.addRenderable(
-            new MOLVIS.Box(this.scene, {
-                orthogonal: {
-                    lx: 1,
-                    ly: 1,
-                    lz: 1
-                },
-                center: BABYLON.Vector3.Zero(),
-                style: {
-                    type: 'line',
-                    color: BABYLON.Color3.White(),
-                    radius: 0.1
-                }
-            })
-        );
+        this.addBox({
+            orthogonal: {
+                lx: 10,
+                ly: 10,
+                lz: 10
+            },
+            center: BABYLON.Vector3.Zero(),
+            style: {
+                type: 'line',
+                color: BABYLON.Color3.White(),
+                radius: 0.1
+            }
+        });
 
+    }
+
+    public initCramera(canvas: HTMLCanvasElement) {
+        this.camera = new MOLVIS.Camera(canvas, true);
+        this.camera.setPosition(new BABYLON.Vector3(0, 0, -10));
+    }
+
+    public addBox(attributes: MOLVIS.BoxAttributes) {
+        this.addRenderable(
+            new MOLVIS.Box(this.scene, attributes)
+        );
     }
 
     public addRenderable(renderable: MOLVIS.Renderable) {
         this.renderables.push(renderable);
+        renderable.create();
+    }
+
+    public addAtom(attributes: MOLVIS.AtomAttributes) {
+        this.addRenderable(new MOLVIS.Atom(this.scene, attributes));
     }
 
     private _loopRenderables() {
@@ -49,9 +63,6 @@ export class Molvis {
     }
 
     public run() {
-        this.renderables.forEach((renderable) => {
-            renderable.create();
-        });
         this.engine.runRenderLoop(() => {
             this._loopRenderables();
             this.scene.render();

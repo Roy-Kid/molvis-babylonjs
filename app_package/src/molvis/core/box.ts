@@ -1,7 +1,7 @@
 import * as BABYLON from "@babylonjs/core";
 import { Renderable } from "./renderable";
 
-interface BoxAttributes {
+export interface BoxAttributes {
     orthogonal?: {
         lx: number;
         ly: number;
@@ -25,7 +25,7 @@ interface BoxAttributes {
 
 export class Box extends Renderable {
 
-    public attributes: BoxAttributes;
+    private _attributes!: BoxAttributes;
 
     public constructor(scene: BABYLON.Scene, attributes: BoxAttributes) {
 
@@ -33,6 +33,16 @@ export class Box extends Renderable {
 
         this.attributes = attributes;
 
+    }
+
+    public set attributes(attributes: BoxAttributes) {
+        this._attributes = attributes;
+    }
+
+    public get attributes(): BoxAttributes {
+
+        return this._attributes;
+    
     }
 
     public create(): void {

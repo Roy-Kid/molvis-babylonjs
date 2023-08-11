@@ -9,8 +9,6 @@ export abstract class Renderable {
     protected scene: BABYLON.Scene;
 
     protected meshes: BABYLON.Mesh[] = [];
-
-    public attributes: object = {};
     
     public constructor(scene: BABYLON.Scene) {
         this.scene = scene;
